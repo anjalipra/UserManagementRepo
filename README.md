@@ -46,3 +46,8 @@ I have used log4j for logging propers loggers for debugging.
 Time Taken and challenges faced
 --------------------------------
 The time taken by me to work on this project was 4-5 days, which basically involved implementation and upskilling myself with certain functionalities dealing in authentication and authorization using Spring Boot Security. I have implemented everything asked in the technical assessment except the docker. Though I tried to implement that as well, but I couldn't implement due to cetain challenges faced while installing the Docker in my system. Though I understood it functionally but there were software application challenges.
+
+
+Why(or why not) you will build the APIs differently for web and mobile channels?
+-----------------------------------------------------------------------------------
+We will not build seperate APIs for web and mobile channels because the REST is an architechtural style which basically lets any client access the resources over http protocol. These APIs are developed for your application no matter what is the client (web / mobile).
