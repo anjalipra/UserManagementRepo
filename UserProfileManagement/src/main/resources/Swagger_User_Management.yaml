@@ -1,0 +1,496 @@
+{  
+   "swagger":"2.0",
+   "info":{  
+      "description":"User Profile Management REST API",
+      "version":"1.0.0",
+      "title":"Spring Boot REST API",
+      "contact":{  
+         "name":"Anjali Prakash"
+      }
+   },
+   "host":"localhost:8080",
+   "basePath":"/",
+   "tags":[  
+      {  
+         "name":"authentication-controller",
+         "description":"Authentication Controller"
+      },
+      {  
+         "name":"user-management-controller",
+         "description":"Operations pertaining to user profile in User Management System"
+      }
+   ],
+   "paths":{  
+      "/auth/signin":{  
+         "post":{  
+            "tags":[  
+               "authentication-controller"
+            ],
+            "summary":"Sign-in the user for generating the JWT token",
+            "operationId":"authenticateUserUsingPOST",
+            "consumes":[  
+               "application/json"
+            ],
+            "produces":[  
+               "*/*"
+            ],
+            "parameters":[  
+               {  
+                  "in":"body",
+                  "name":"loginRequest",
+                  "description":"loginRequest",
+                  "required":true,
+                  "schema":{  
+                     "$ref":"#/definitions/LoginForm"
+                  }
+               }
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"OK",
+                  "schema":{  
+                     "type":"object"
+                  }
+               },
+               "201":{  
+                  "description":"Created"
+               },
+               "401":{  
+                  "description":"Unauthorized"
+               },
+               "403":{  
+                  "description":"Forbidden"
+               },
+               "404":{  
+                  "description":"Not Found"
+               }
+            }
+         }
+      },
+      "/users/assignRole/{userId}/{role}":{  
+         "put":{  
+            "tags":[  
+               "user-management-controller"
+            ],
+            "summary":"Assigning a role to a particualr user profile",
+            "operationId":"assignRoleUsingPUT",
+            "consumes":[  
+               "application/json"
+            ],
+            "produces":[  
+               "*/*"
+            ],
+            "parameters":[  
+               {  
+                  "name":"userId",
+                  "in":"path",
+                  "description":"userId",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               },
+               {  
+                  "name":"role",
+                  "in":"path",
+                  "description":"role",
+                  "required":true,
+                  "type":"string"
+               }
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Successfully updated user with the role",
+                  "schema":{  
+                     "type":"string"
+                  }
+               },
+               "201":{  
+                  "description":"Created"
+               },
+               "401":{  
+                  "description":"You are not authorized to update the resource"
+               },
+               "403":{  
+                  "description":"Accessing the resource you were trying to reach is forbidden"
+               },
+               "404":{  
+                  "description":"The resource you were trying to reach is not found"
+               }
+            }
+         }
+      },
+      "/users/create/":{  
+         "post":{  
+            "tags":[  
+               "user-management-controller"
+            ],
+            "summary":"Create a new user profile",
+            "operationId":"createUserUsingPOST",
+            "consumes":[  
+               "application/json"
+            ],
+            "produces":[  
+               "*/*"
+            ],
+            "parameters":[  
+               {  
+                  "in":"body",
+                  "name":"userProfile",
+                  "description":"userProfile",
+                  "required":true,
+                  "schema":{  
+                     "$ref":"#/definitions/UserProfile"
+                  }
+               }
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Successfully created user",
+                  "schema":{  
+                     "type":"string"
+                  }
+               },
+               "201":{  
+                  "description":"Created"
+               },
+               "401":{  
+                  "description":"You are not authorized to create the resource"
+               },
+               "403":{  
+                  "description":"Accessing the resource you were trying to reach is forbidden"
+               },
+               "404":{  
+                  "description":"The resource you were trying to reach is not found"
+               }
+            }
+         }
+      },
+      "/users/delete/":{  
+         "delete":{  
+            "tags":[  
+               "user-management-controller"
+            ],
+            "summary":"Delete the user profile of the current logged in user",
+            "operationId":"deleteUserUsingDELETE",
+            "consumes":[  
+               "application/json"
+            ],
+            "produces":[  
+               "*/*"
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Successfully deleted user",
+                  "schema":{  
+                     "type":"string"
+                  }
+               },
+               "401":{  
+                  "description":"You are not authorized to delete the resource"
+               },
+               "204":{  
+                  "description":"No Content"
+               },
+               "403":{  
+                  "description":"Accessing the resource you were trying to reach is forbidden"
+               },
+               "404":{  
+                  "description":"The resource you were trying to reach is not found"
+               }
+            }
+         }
+      },
+      "/users/delete/{userId}":{  
+         "delete":{  
+            "tags":[  
+               "user-management-controller"
+            ],
+            "summary":"Delete the user profile based on a UserId",
+            "operationId":"deleteUserUsingDELETE_1",
+            "consumes":[  
+               "application/json"
+            ],
+            "produces":[  
+               "*/*"
+            ],
+            "parameters":[  
+               {  
+                  "name":"userId",
+                  "in":"path",
+                  "description":"userId",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Successfully deleted user"
+               },
+               "401":{  
+                  "description":"You are not authorized to delete the resource"
+               },
+               "204":{  
+                  "description":"No Content"
+               },
+               "403":{  
+                  "description":"Accessing the resource you were trying to reach is forbidden"
+               },
+               "404":{  
+                  "description":"The resource you were trying to reach is not found"
+               }
+            }
+         }
+      },
+      "/users/get/":{  
+         "get":{  
+            "tags":[  
+               "user-management-controller"
+            ],
+            "summary":"Get the user profile of the current logged in user",
+            "operationId":"getUserUsingGET",
+            "consumes":[  
+               "application/json"
+            ],
+            "produces":[  
+               "*/*"
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Successfully fetched user",
+                  "schema":{  
+                     "$ref":"#/definitions/User"
+                  }
+               },
+               "401":{  
+                  "description":"You are not authorized to get the resource"
+               },
+               "403":{  
+                  "description":"Accessing the resource you were trying to reach is forbidden"
+               },
+               "404":{  
+                  "description":"The resource you were trying to reach is not found"
+               }
+            }
+         }
+      },
+      "/users/get/{userId}":{  
+         "get":{  
+            "tags":[  
+               "user-management-controller"
+            ],
+            "summary":"Get the user profile based on the userId",
+            "operationId":"getUserUsingGET_1",
+            "consumes":[  
+               "application/json"
+            ],
+            "produces":[  
+               "*/*"
+            ],
+            "parameters":[  
+               {  
+                  "name":"userId",
+                  "in":"path",
+                  "description":"userId",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Successfully retrieved user",
+                  "schema":{  
+                     "$ref":"#/definitions/User"
+                  }
+               },
+               "401":{  
+                  "description":"You are not authorized to view the resource"
+               },
+               "403":{  
+                  "description":"Accessing the resource you were trying to reach is forbidden"
+               },
+               "404":{  
+                  "description":"The resource you were trying to reach is not found"
+               }
+            }
+         }
+      },
+      "/users/update/":{  
+         "put":{  
+            "tags":[  
+               "user-management-controller"
+            ],
+            "summary":"Update the user profile",
+            "operationId":"updateUserUsingPUT",
+            "consumes":[  
+               "application/json"
+            ],
+            "produces":[  
+               "*/*"
+            ],
+            "parameters":[  
+               {  
+                  "in":"body",
+                  "name":"userProfile",
+                  "description":"userProfile",
+                  "required":true,
+                  "schema":{  
+                     "$ref":"#/definitions/UserProfile"
+                  }
+               }
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Successfully updated user",
+                  "schema":{  
+                     "type":"string"
+                  }
+               },
+               "201":{  
+                  "description":"Created"
+               },
+               "401":{  
+                  "description":"You are not authorized to update the resource"
+               },
+               "403":{  
+                  "description":"Accessing the resource you were trying to reach is forbidden"
+               },
+               "404":{  
+                  "description":"The resource you were trying to reach is not found"
+               }
+            }
+         }
+      }
+   },
+   "definitions":{  
+      "Role":{  
+         "type":"object",
+         "properties":{  
+            "id":{  
+               "type":"integer",
+               "format":"int64",
+               "description":"Database generated Role Id"
+            },
+            "name":{  
+               "type":"string",
+               "description":"Role name",
+               "enum":[  
+                  "ROLE_USER",
+                  "ROLE_ADMIN"
+               ]
+            }
+         }
+      },
+      "User":{  
+         "type":"object",
+         "properties":{  
+            "dateOfBirth":{  
+               "type":"string",
+               "format":"date-time",
+               "description":"User date of birth"
+            },
+            "email":{  
+               "type":"string",
+               "description":"User email address"
+            },
+            "firstName":{  
+               "type":"string",
+               "description":"User first name"
+            },
+            "homeAddress":{  
+               "type":"string",
+               "description":"User home address"
+            },
+            "id":{  
+               "type":"integer",
+               "format":"int64",
+               "description":"The database generated User ID"
+            },
+            "lastName":{  
+               "type":"string",
+               "description":"User last name"
+            },
+            "name":{  
+               "type":"string"
+            },
+            "officeAddress":{  
+               "type":"string",
+               "description":"User office address"
+            },
+            "password":{  
+               "type":"string",
+               "description":"Password"
+            },
+            "role":{  
+               "$ref":"#/definitions/Role"
+            },
+            "username":{  
+               "type":"string",
+               "description":"Username"
+            }
+         },
+         "description":"All details about the User Profile for mapping to the database."
+      },
+      "UserProfile":{  
+         "type":"object",
+         "properties":{  
+            "dateOfBirth":{  
+               "type":"string",
+               "format":"date-time",
+               "description":"User date of birth"
+            },
+            "email":{  
+               "type":"string",
+               "description":"User email address"
+            },
+            "firstName":{  
+               "type":"string",
+               "description":"User firstname"
+            },
+            "homeAddress":{  
+               "type":"string",
+               "description":"User home address"
+            },
+            "lastName":{  
+               "type":"string",
+               "description":"User lastname"
+            },
+            "name":{  
+               "type":"string"
+            },
+            "officeAddress":{  
+               "type":"string",
+               "description":"User office address"
+            },
+            "password":{  
+               "type":"string",
+               "description":"Password"
+            },
+            "role":{  
+               "type":"string",
+               "description":"User role"
+            },
+            "username":{  
+               "type":"string",
+               "description":"Username"
+            }
+         },
+         "description":"All details required for the user profile management"
+      },
+      "LoginForm":{  
+         "type":"object",
+         "properties":{  
+            "password":{  
+               "type":"string",
+               "description":"Password"
+            },
+            "username":{  
+               "type":"string",
+               "description":"Username"
+            }
+         },
+         "description":"All details required for signing in. "
+      }
+   }
+}
