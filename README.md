@@ -2,11 +2,11 @@
 
 Introduction
 -------------
-This Spring Boot project is created for a User Profile management system. There are 2 types of users who can access to the system with roles as ADMIN and USER. The security mechanism used to autheticate the users is JSON Web Token. Only after successfull authentication they can access the REST API's. The REST endpoints have a pre authorization wherein there is a limitation on which user can perform which API's. 
+This Spring Boot project is created for a User Profile management system. There are 2 types of users who can access to the system with roles as ADMIN and USER. The security mechanism used to authenticate the users is JSON Web Token. Only after successful authentication they can access the REST API's. The REST endpoints have a pre-authorization wherein there is a limitation on which user can perform which API's. 
 
 REST API's information
 -----------------------
-Swagger(API Blueprint) uploaded in the project at the location "UserProfileManagement\src\main\resources\Swagger_User_Management.yaml" having a detailed information about the REST API's as well as the models used.
+Swagger (API Blueprint) uploaded in the project at the location "UserProfileManagement\src\main\resources\Swagger_User_Management.yaml" having a detailed information about the REST API's as well as the models used.
 
 
 Database
@@ -50,4 +50,4 @@ The time taken by me to work on this project was 4-5 days, which basically invol
 
 Why(or why not) you will build the APIs differently for web and mobile channels?
 -----------------------------------------------------------------------------------
-We will not build seperate APIs for web and mobile channels because the REST is an architechtural style which basically lets any client access the resources over http protocol. These APIs are developed for your application no matter what is the client (web / mobile).
+We will not build separate APIs for web and mobile channels because the REST is an architectural style which basically lets any client access the resources over http protocol. These APIs are developed for your application no matter what the client is (web / mobile).
