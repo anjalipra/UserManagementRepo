@@ -4,6 +4,20 @@ Introduction
 -------------
 This Spring Boot project is created for a User Profile management system. There are 2 types of users who can access to the system with roles as ADMIN and USER. The security mechanism used to authenticate the users is JSON Web Token. Only after successful authentication they can access the REST API's. The REST endpoints have a pre-authorization wherein there is a limitation on which user can perform which API's. 
 
+Steps to use the application
+-----------------------------
+The first user which is used to sign in is admin. Trigger the following API:
+http://localhost:8080/auth/signin
+Body: 
+{
+	"username": "admin",
+	"password": "admin"
+}
+
+You will receive the access token in the response from the server. Copy the access token and add in the header in the subsequent request to the server from that user in the following way and trigger the API.
+Authorization: “Bearer Access Token”
+
+
 REST API's information
 -----------------------
 Swagger (API Blueprint) uploaded in the project at the location "UserProfileManagement\src\main\resources\Swagger_User_Management.yaml" having a detailed information about the REST API's as well as the models used.
